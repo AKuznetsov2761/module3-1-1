@@ -49,7 +49,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getUserByName(String name) {
         return (User) entityManager.createQuery(
-                "from User u join fetch u.roles where u.name=:name"
+                "select u from User u join fetch u.roles where u.name=:name"
         ).setParameter("name", name).getSingleResult();
     }
 }
